@@ -334,7 +334,7 @@ def display_features():
 
 def main():
     # Configure API key
-    GOOGLE_API_KEY = "YOUR_API_KEY"
+    GOOGLE_API_KEY = "AIzaSyCiaqnFfhMe0Acscy8MgaF69kioayPX3GY"
     genai.configure(api_key=GOOGLE_API_KEY)
     
     init_styles()
