@@ -3,7 +3,6 @@ import os
 import pathlib
 from PIL import Image
 import google.generativeai as genai
-from dotenv import load_dotenv
 
 def init_styles():
     st.markdown("""
@@ -61,7 +60,7 @@ def init_styles():
     """, unsafe_allow_html=True)
 
 def get_gemini_response(input_text, image, prompt):
-    model = genai.GenerativeModel('gemini-pro-vision')
+    model = genai.GenerativeModel('gemini-1.5-flash')
     response = model.generate_content([input_text, image[0], prompt])
     return response.text
 
@@ -78,8 +77,9 @@ def input_image_setup(uploaded_file):
     raise FileNotFoundError("No file uploaded")
 
 def main():
-    load_dotenv()
-    genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+    # Direct API key configuration
+    GOOGLE_API_KEY = "AIzaSyCiaqnFfhMe0Acscy8MgaF69kioayPX3GY"
+    genai.configure(api_key=GOOGLE_API_KEY)
     
     init_styles()
     
@@ -100,7 +100,7 @@ def main():
         if uploaded_file:
             with col2:
                 image = Image.open(uploaded_file)
-                st.image(image, caption="Preview", use_column_width=True)
+                st.image(image, caption="Preview", use_container_width=True)  # Updated parameter
         
         input_prompt = """
         You are an expert in analyzing images and providing detailed, insightful responses.
@@ -119,7 +119,7 @@ def main():
             except Exception as e:
                 st.error(f"An error occurred: {str(e)}")
         
-        st.markdown("<div class='footer'>Powered by Google Gemini Pro Vision</div>", 
+        st.markdown("<div class='footer'>Powered by Google Gemini 1.5 Flash</div>", 
                    unsafe_allow_html=True)
 
 if __name__ == "__main__":
