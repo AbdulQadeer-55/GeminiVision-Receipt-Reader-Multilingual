@@ -333,13 +333,11 @@ def display_features():
             """, unsafe_allow_html=True)
 
 def main():
-    # Configure API key
     GOOGLE_API_KEY = "AIzaSyCiaqnFfhMe0Acscy8MgaF69kioayPX3GY"
     genai.configure(api_key=GOOGLE_API_KEY)
     
     init_styles()
     
-    # Header with animation
     st.markdown("""
         <div style="text-align: center; padding: 3rem 0;">
             <h1>Vision Analysis Pro</h1>
@@ -349,7 +347,6 @@ def main():
         </div>
     """, unsafe_allow_html=True)
     
-    # Main content
     with st.container():
         st.markdown('<div class="glass-container">', unsafe_allow_html=True)
         
@@ -416,7 +413,6 @@ def main():
         
         st.markdown('</div>', unsafe_allow_html=True)
     
-    # Features section with improved spacing
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("""
         <h2 style="text-align: center; margin-bottom: 2rem;">
@@ -425,7 +421,6 @@ def main():
     """, unsafe_allow_html=True)
     display_features()
     
-    # Footer
     st.markdown("""
         <div class="footer">
             <p>© 2024 Vision Analysis Pro. All rights reserved.</p>
